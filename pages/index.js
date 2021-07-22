@@ -9,7 +9,7 @@ export default function Home({ data }) {
             </Head>
             <section className="container">
                 <h1>ATLAS Headless Simple Next.js App</h1>
-                <h3>Posts from Wordpress (ok)</h3>
+                <h3>Posts from Wordpress (ok1)</h3>
                 <ul>
                     {data && data.map(({id, title, excerpt}) => (
                         <li key={id}>
