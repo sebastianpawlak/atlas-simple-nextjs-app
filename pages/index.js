@@ -8,7 +8,7 @@ export default function Home({ data }) {
                 <title>ATLAS Headless Simple Next.js App</title>
             </Head>
             <section className="container">
-                <h1>ATLAS Headless Simple Next.js Appp</h1>
+                <h1>ATLAS Headless Simple Next.js Apppp</h1>
                 <h3>Posts from Wordpress (ok1)</h3>
                 <ul>
                     {data && data.map(({id, title, excerpt}) => (
