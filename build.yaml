@@ -1,0 +1,17 @@
+# Delete all an images tags
+# Usage: gcloud builds submit --project=wp-engine-headless-build --config=delete.yaml
+
+steps:
+
+- id: perms
+  name: "gcr.io/cloud-builders/git"
+  entrypoint: "chmod"
+  args: ["-v", "-R", "a+rw", "/workspace"]
+  dir: "path/to/some/dir"
+
+- id: "Create"
+  name: "us-docker.pkg.dev/wpe-art/headless-images/atlas-buildpacks/builder/nodejs@sha256:2c67bbace243fc45d44251e0cbae73e30f47aab5072af327be2c9c39dc0a3e66"
+  args: ["/cnb/lifecycle/creator", "-app=.", "us-docker.pkg.dev/wpe-art/headless-images/simple-test-app:latest"]
+
+tags:
+- one-off
