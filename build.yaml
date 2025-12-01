@@ -1,5 +1,4 @@
-# Delete all an images tags
-# Usage: gcloud builds submit --project=wp-engine-headless-build --config=delete.yaml
+# Usage: gcloud builds submit --project=wp-engine-headless-build --config=build.yaml
 
 steps:
 
