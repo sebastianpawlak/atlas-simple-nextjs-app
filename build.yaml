@@ -11,6 +11,9 @@ steps:
 - id: "Create"
   name: "us-docker.pkg.dev/wpe-art/headless-images/atlas-buildpacks/builder/nodejs@sha256:2c67bbace243fc45d44251e0cbae73e30f47aab5072af327be2c9c39dc0a3e66"
   args: ["/cnb/lifecycle/creator", "-app=.", "us-docker.pkg.dev/wpe-art/headless-images/simple-test-app:latest"]
+  env:
+  - "HEADLESS_BUILDER_VERSION=v3.2.1"
+  - "CNB_PLATFORM_API=0.9"
 
 tags:
 - one-off
