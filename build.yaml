@@ -6,14 +6,20 @@ steps:
   name: "gcr.io/cloud-builders/git"
   entrypoint: "chmod"
   args: ["-v", "-R", "a+rw", "/workspace"]
-  dir: "path/to/some/dir"
 
 - id: "Create"
   name: "us-docker.pkg.dev/wpe-art/headless-images/atlas-buildpacks/builder/nodejs@sha256:2c67bbace243fc45d44251e0cbae73e30f47aab5072af327be2c9c39dc0a3e66"
-  args: ["/cnb/lifecycle/creator", "-app=.", "us-docker.pkg.dev/wpe-art/headless-images/simple-test-app:latest"]
   env:
   - "HEADLESS_BUILDER_VERSION=v3.2.1"
   - "CNB_PLATFORM_API=0.9"
+  script: |
+    mkdir -p /home/cnb/platform/env
+    echo -n "v3.2.1" > /home/cnb/platform/env/HEADLESS_BUILDER_VERSION
+    /cnb/lifecycle/analyzer us-docker.pkg.dev/wpe-art/headless-images/simple-test-app:latest
+    /cnb/lifecycle/detector
+    /cnb/lifecycle/restorer 
+    /cnb/lifecycle/builder -platform /home/cnb/platform
+
 
 tags:
 - one-off
